@@ -248,6 +248,24 @@
                 width: 30px;
             }
         </style>
+
+        <script>
+            fetch("/resource/sprite.svg")
+                .then((response) => {
+                    if (!response.ok)
+                        throw new Error("Network error loading sprite.svg");
+                    return response.text();
+                })
+                .then((svg) => {
+                    const div = document.createElement("div");
+                    div.style.display = "none";
+                    div.innerHTML = svg;
+                    document.body.insertBefore(div, document.body.firstChild);
+                })
+                .catch((error) => {
+                    console.error("Error loading SVG sprite:", error);
+                });
+        </script>
     </head>
     <body>
         <div class="container">
@@ -261,9 +279,7 @@
                     focusable="false"
                     fill="currentColor"
                 >
-                    <use
-                        href="https://sahandmsv.github.io/InfoLink/sprite.svg#icon-settings"
-                    ></use>
+                    <use href="#icon-settings"></use>
                 </svg>
             </button>
 
@@ -282,9 +298,7 @@
                         focusable="false"
                         fill="currentColor"
                     >
-                        <use
-                            href="https://sahandmsv.github.io/InfoLink/sprite.svg#icon-instagram"
-                        ></use>
+                        <use href="#icon-instagram"></use>
                     </svg>
                 </button>
 
@@ -296,9 +310,7 @@
                         focusable="false"
                         fill="currentColor"
                     >
-                        <use
-                            href="https://sahandmsv.github.io/InfoLink/sprite.svg#icon-whatsapp"
-                        ></use>
+                        <use href="#icon-whatsapp"></use>
                     </svg>
                 </button>
 
@@ -310,9 +322,7 @@
                         focusable="false"
                         fill="currentColor"
                     >
-                        <use
-                            href="https://sahandmsv.github.io/InfoLink/sprite.svg#icon-email"
-                        ></use>
+                        <use href="#icon-email"></use>
                     </svg>
                 </button>
             </div>
