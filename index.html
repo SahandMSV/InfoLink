@@ -7,7 +7,247 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
         />
-        <link rel="stylesheet" href="/resource/style.css" />
+        <!-- <link rel="stylesheet" href="/resource/style.css" /> -->
+        <style>
+            @font-face {
+                font-family: "IRANSansX";
+                src: url("./resource/IRANSANSX-BOLD.TTF") format("truetype");
+                font-weight: bold;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: "IRANSansX";
+                src: url("./resource/IRANSANSX-DEMIBOLD.TTF") format("truetype");
+                font-weight: 600; /* Semi-bold */
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: "IRANSansX";
+                src: url("./resource/IRANSANSX-MEDIUM.TTF") format("truetype");
+                font-weight: 500; /* Medium */
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: "IRANSansX";
+                src: url("./resource/IRANSANSX-REGULAR.TTF") format("truetype");
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            :root {
+                box-sizing: border-box;
+
+                --card-top-margin: 50px;
+            }
+
+            body::before {
+                content: "";
+
+                position: absolute;
+                inset: 0;
+
+                pointer-events: none;
+
+                z-index: 0;
+
+                opacity: 0.4;
+
+                background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+                background-size: 150px;
+                filter: contrast(150%) brightness(150%);
+                mix-blend-mode: soft-light;
+            }
+
+            body {
+                margin: 0;
+
+                font-family: "IRANSansX", Tahoma, sans-serif;
+                background: rgb(30, 30, 30);
+                color: rgb(235, 235, 235);
+
+                min-height: 100vh;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .container {
+                position: relative;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                width: min(400px, 100vw);
+                min-height: 500px;
+                margin-inline: 20px;
+
+                z-index: 1;
+            }
+
+            .frame {
+                position: absolute;
+                bottom: 0;
+
+                width: 100%;
+                height: calc(100% - var(--card-top-margin));
+
+                background: linear-gradient(
+                    to bottom,
+                    rgb(75, 75, 75),
+                    rgb(100, 100, 100)
+                );
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                min-height: 30px;
+                border-radius: 25px;
+                box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+
+                z-index: -1;
+            }
+
+            .setting-btn {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                transform: translateY(var(--card-top-margin));
+
+                width: 40px;
+                aspect-ratio: 1;
+                border-radius: 50%;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                background-color: rgba(255, 255, 255, 0.05);
+                color: rgb(227, 227, 227);
+                border: none;
+
+                cursor: pointer;
+                transition: background-color 0.35s ease;
+
+                z-index: 99;
+            }
+            .setting-btn:hover {
+                background-color: rgba(255, 255, 255, 0.09);
+            }
+            .setting-btn:active {
+                background-color: rgba(255, 255, 255, 0.15);
+            }
+
+            .setting-btn svg {
+                width: 24px;
+                height: 24px;
+                fill: #e3e3e3;
+            }
+
+            .header {
+                width: 100%;
+
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+
+            .header img {
+                width: calc(var(--card-top-margin) * 2);
+                aspect-ratio: 1;
+                border-radius: 25%;
+                box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+                margin-bottom: 10px;
+            }
+
+            .header .title {
+                font-size: 1.2rem;
+                font-weight: 700;
+            }
+
+            /* === MODIFICATIONS START HERE === */
+
+            .quick-access-bar {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                padding-block: 20px;
+            }
+
+            .quick-access-bar button {
+                width: 50px;
+                border: none;
+                aspect-ratio: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                cursor: pointer;
+                background-color: rgba(255, 255, 255, 0.1);
+                position: relative;
+                overflow: hidden;
+                z-index: 1;
+                /* Add transition for the box-shadow */
+                transition: box-shadow 0.2s ease-out;
+            }
+
+            /* This is the base style for ALL gradient layers */
+            .quick-access-bar button::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                opacity: 0;
+                transition: opacity 0.2s ease-out;
+                z-index: -1;
+            }
+
+            /* Define the specific gradient for EACH button's layer */
+            .quick-access-bar button[aria-label="Instagram"]::before {
+                background: linear-gradient(135deg, #833ab4, #fd1d1d);
+            }
+
+            .quick-access-bar button[aria-label="WhatsApp"]::before {
+                background: linear-gradient(135deg, #25d366, #128c7e);
+            }
+
+            .quick-access-bar button[aria-label="Email"]::before {
+                background: linear-gradient(135deg, #5085bb, #1b4a6e);
+            }
+
+            /* On hover, reveal the pseudo-element and add a shadow to the button */
+            .quick-access-bar button:hover::before,
+            .quick-access-bar button:active::before {
+                opacity: 1;
+            }
+
+            .quick-access-bar button:hover,
+            .quick-access-bar button:active {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .quick-access-bar button svg {
+                width: 35px;
+                aspect-ratio: 1;
+                fill: white;
+            }
+            .quick-access-bar button:last-child svg {
+                width: 30px;
+            }
+        </style>
     </head>
     <body>
         <div class="container">
