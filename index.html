@@ -1,53 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Bio Link</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 2em;
-      font-family: sans-serif;
-      background: #f9f9f9;
-      color: #111;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    h1 {
-      margin-bottom: 0.5em;
-    }
-    .links a {
-      display: block;
-      margin: 0.5em 0;
-      padding: 0.75em 1em;
-      text-decoration: none;
-      color: #111;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      max-width: 300px;
-      text-align: center;
-    }
-    .links a:hover {
-      background: #eee;
-    }
-    .info {
-      margin-top: 2em;
-      font-size: 0.9em;
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-  <h1>Your Name</h1>
-  <div class="links">
-    <a href="https://example.com">Website</a>
-    <a href="https://twitter.com/example">Twitter</a>
-    <a href="tel:+1234567890">Call</a>
-  </div>
-  <div class="info">
-    123 Main St, City<br>
-    your@email.com
-  </div>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Bio Link</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+        />
+        <link rel="stylesheet" href="/style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="frame"></div>
+
+            <!-- SETTINGS BUTTON -->
+            <button class="setting-btn" aria-label="Settings">
+                <svg
+                    class="icon"
+                    aria-hidden="true"
+                    focusable="false"
+                    fill="currentColor"
+                >
+                    <use href="sprite.svg#icon-settings"></use>
+                </svg>
+            </button>
+
+            <div class="header">
+                <img src="./resource/Avang-Logo-2.jpg" alt="Logo" />
+                <p class="title">آونگ رایانه</p>
+                <p class="bio">تعمیرات تخصصی لپتاپ و کامپیوتر</p>
+            </div>
+
+            <div class="quick-access-bar">
+                <!-- INSTAGRAM BUTTON -->
+                <button aria-label="Instagram">
+                    <svg
+                        class="icon"
+                        aria-hidden="true"
+                        focusable="false"
+                        fill="currentColor"
+                    >
+                        <use href="sprite.svg#icon-instagram"></use>
+                    </svg>
+                </button>
+
+                <!-- WHATSAPP BUTTON -->
+                <button aria-label="WhatsApp">
+                    <svg
+                        class="icon"
+                        aria-hidden="true"
+                        focusable="false"
+                        fill="currentColor"
+                    >
+                        <use href="sprite.svg#icon-whatsapp"></use>
+                    </svg>
+                </button>
+
+                <!-- EMAIL BUTTON -->
+                <button aria-label="Email">
+                    <svg
+                        class="icon"
+                        aria-hidden="true"
+                        focusable="false"
+                        fill="currentColor"
+                    >
+                        <use href="sprite.svg#icon-email"></use>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </body>
 </html>
